@@ -2,7 +2,6 @@ package bond.web.cors.proxy.service;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,7 +17,7 @@ public class HttpClientServiceImpl implements HttpClientService {
             HttpEntity<String> response = restTemplate.exchange(
                     headers.get("url"),
                     HttpMethod.GET,
-                    new HttpEntity<>(headers),
+                    new HttpEntity<Map<String, String>>(headers),
                     String.class,
                     params);
             if (response.hasBody()) {
