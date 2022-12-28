@@ -10,6 +10,9 @@ import java.util.Map;
 @Service
 public class HttpClientServiceImpl implements HttpClientService {
 
+    private final static String ERROR_CODE_DEF = "{\"status\":\"error\",\"code\":\"404\"," +
+            "\"message\":\"Request has been failed.\"}";
+
     @Override
     public Object get(Map<String, String> headers, Map<String, String> params) {
         RestTemplate restTemplate = new RestTemplate();
@@ -23,9 +26,9 @@ public class HttpClientServiceImpl implements HttpClientService {
             if (response.hasBody()) {
                 return response.getBody();
             }
-        } catch (Exception ex) {
-            return "";
+        } catch (RuntimeException ex) {
+            return ex.getMessage();
         }
-        return "";
+        return ERROR_CODE_DEF;
     }
 }
