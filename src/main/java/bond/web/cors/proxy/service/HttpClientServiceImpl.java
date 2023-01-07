@@ -15,12 +15,13 @@ public class HttpClientServiceImpl implements HttpClientService {
 
     @Override
     public Object get(Map<String, String> headers, Map<String, String> params) {
+        System.out.println(headers.get("url"));
         RestTemplate restTemplate = new RestTemplate();
         try {
             HttpEntity<String> response = restTemplate.exchange(
                     headers.get("url"),
                     HttpMethod.GET,
-                    new HttpEntity<Map<String, String>>(headers),
+                    new HttpEntity<>(headers),
                     String.class,
                     params);
             if (response.hasBody()) {

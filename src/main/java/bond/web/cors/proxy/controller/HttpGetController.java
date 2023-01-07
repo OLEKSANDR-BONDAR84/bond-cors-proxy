@@ -2,7 +2,6 @@ package bond.web.cors.proxy.controller;
 
 import bond.web.cors.proxy.service.HttpClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/**")
+@RequestMapping("/")
 public class HttpGetController {
 
     private final HttpClientService httpClient;
